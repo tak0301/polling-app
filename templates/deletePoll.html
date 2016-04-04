@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+    <title>Pollearning</title>
+    <link rel="stylesheet" href="/static/styles.css">
+  </head>
+
+  <body>
+
+    <div class="accountContainer">
+      <div class="accountWrap">
+        <span>{{creator.name}}</span>
+        <a href="{{url_for('gdisconnect')}}">(Logout)</a>
+      </div>
+    </div>
+
+    <div class="menuContainer">
+      <div class="logoWrap">
+        <a href="{{url_for('home')}}"><img src="/static/poll2.png" alt="Pollearning logo"></a>
+      </div>
+      <div class="menuWrap">
+        <span class="homeMenuButton"><a href="{{url_for('home')}}">Home</a></span>
+        <span class="pollsMenuButton"><a href="{{url_for('showPolls')}}">Polls</a></span>
+        <div class="addMenuWrap">
+          <span class="addMenu"><a href="{{url_for('newPoll')}}">Create Poll</a></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="editCreateDeleteTitle2">
+      <span class="editCreateDelete">Delete Poll ({{poll.title}})</span>
+    </div>
+
+    <div class="editcreateWrap">
+      <form method="POST">
+        <div class="pollTitleQuestionWrap2">
+          <span class="pollTitleText2">Are you sure you want to delete this poll?</span>
+        </div>
+        <div class="submitCancelButtonWrap">
+          <div class="cancelButtonWrap">
+            <span class="cancelButton"><a href="{{url_for('singlePoll', poll_id=poll.id)}}">Cancel</a></span>
+          </div>
+          <div class="submitButtonWrap">
+            <input type="submit" value="Delete" class="submit">
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="fContainer">
+    </div>
+
+
+  </body>
+
+</html>

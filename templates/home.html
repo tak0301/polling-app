@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+    <title>Pollearning</title>
+    <link rel="stylesheet" href="/static/styles.css">
+  </head>
+
+  <body>
+
+
+    <div class="accountContainer">
+      <div class="accountWrap">
+        <a href="{{url_for('showLogin')}}">Login</a>
+      </div>
+    </div>
+
+    <div class="menuContainer">
+      <div class="logoWrap">
+        <a href="{{url_for('home')}}"><img src="static/poll2.png" alt="Pollearning logo"></a>
+      </div>
+      <div class="menuWrap">
+        <span class="homeMenuButton"><a href="{{url_for('home')}}">Home</a></span>
+        <span class="pollsMenuButton"><a href="{{url_for('showPolls')}}">Polls</a></span>
+        <div class="addMenuWrap">
+          <span class="addMenu"><a href="{{url_for('newPoll')}}">Create Poll</a></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hContainer">
+      <img class="homeImage" src="static/homeImage.jpg" alt="Home Page Image">
+      <div class="headerAddButton">
+        <span class="homeTitle">Pollearning</span>
+        <div class="addButtonWrap">
+          <span class="addButton"><a href="{{url_for('newPoll')}}">Create New Poll</a></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="aboutContainer">
+      <span class="aboutTitle">About Pollearning</span>
+      <p>Let MenuMaker help you manage you restaurant menus online, easier and faster. It's simple. Just add your restaurant to MenuMaker and begin building out your delicious menu. Easily useable and sharable, MenuMaker is key to helping you manage your menu online.</p>
+    </div>
+
+    <div class="contentContainer">
+      <div class="developWrap">
+        <div class="developImage">
+          <img src="static/poll.jpg" alt="Image for developing Polls">
+        </div>
+        <div class="developText">
+          <span class="developTitle">Develop</span>
+          <p>Developing a poll is quick and easy. With Pollearning you can have your poll developed and ready to be shared in no time...Adding a little to this one as well.</p>
+        </div>
+      </div>
+      <div class="shareWrap">
+        <div class="shareImage">
+          <img src="static/poll.jpg" alt="Image for sharing Polls">
+        </div>
+        <div class="shareText">
+          <span class="shareTitle">Share</span>
+          <p>Sharing a poll is just as easy as developing one. Once your poll is developed, Pollearning makes sharing your poll with your students or to the public is easy as 1. 2. 3.</p>
+        </div>
+      </div>
+      <div class="assessWrap">
+        <div class="assessImage">
+          <img src="static/poll.jpg" alt="Image for assessing Polls">
+        </div>
+        <div class="assessText">
+          <span class="assessTitle">Assess</span>
+          <p>Pollearning makes assessing learning easy, and it helps inform your teaching practice moving forward...Adding a third line here to make sure these are in balance.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="fContainer">
+    </div>
+
+
+  </body>
+
+</html>

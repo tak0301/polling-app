@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+    <title>Pollearning</title>
+    <link rel="stylesheet" href="/static/styles.css">
+  </head>
+
+  <body>
+
+    <div class="accountContainer">
+      <div class="accountWrap">
+        <span>{{creator.name}}</span>
+        <a href="{{url_for('gdisconnect')}}">(Logout)</a>
+      </div>
+    </div>
+
+    <div class="menuContainer">
+      <div class="logoWrap">
+        <a href="{{url_for('home')}}"><img src="/static/poll2.png" alt="Pollearning logo"></a>
+      </div>
+      <div class="menuWrap">
+        <span class="homeMenuButton"><a href="{{url_for('home')}}">Home</a></span>
+        <span class="pollsMenuButton"><a href="{{url_for('showPolls')}}">Polls</a></span>
+        <div class="addMenuWrap">
+          <span class="addMenu"><a href="{{url_for('newPoll')}}">Create Poll</a></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="editCreateDeleteTitle2">
+      <span class="editCreateDelete">Create List of Choices for Your New Poll ({{poll.title}})</span>
+    </div>
+
+    <div class="instructionsWrap">
+      <span class="instructions">(You can add up to 10 choices for your poll.)</span>
+    </div>
+
+    <div class="editcreateWrap">
+      <form method="POST">
+        <div class="choicesWrap">
+          <input type="text" size="30" name="choiceTitle1" placeholder="e.g. Cheese"><br><br>
+          <input type="text" size="30" name="choiceTitle2" placeholder="e.g. Pepperoni"><br><br>
+          <input type="text" size="30" name="choiceTitle3" placeholder="e.g. Mushrooms"><br><br>
+          <input type="text" size="30" name="choiceTitle4" placeholder="e.g. Onions"><br><br>
+          <input type="text" size="30" name="choiceTitle5" placeholder="e.g. Peppers"><br><br>
+          <input type="text" size="30" name="choiceTitle6" placeholder="e.g. Sausage"><br><br>
+          <input type="text" size="30" name="choiceTitle7" placeholder="e.g. Bacon"><br><br>
+          <input type="text" size="30" name="choiceTitle8" placeholder="e.g. Anchovies"><br><br>
+          <input type="text" size="30" name="choiceTitle9" placeholder="e.g. Basil"><br><br>
+          <input type="text" size="30" name="choiceTitle10" placeholder="e.g. Sundried Tomatoes">
+        </div>
+        <div class="submitCancelButtonWrap2">
+          <div class="cancelButtonWrap">
+            <span class="cancelButton"><a href="{{url_for('home')}}">Cancel</a></span>
+          </div>
+          <div class="submitButtonWrap">
+            <input type="submit" value="Create" class="submit">
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="fContainer2">
+    </div>
+
+  </body>
+
+</html>

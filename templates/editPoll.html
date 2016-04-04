@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+    <title>Pollearning</title>
+    <link rel="stylesheet" href="/static/styles.css">
+  </head>
+
+  <body>
+
+    <div class="accountContainer">
+      <div class="accountWrap">
+        <span>{{creator.name}}</span>
+        <a href="{{url_for('gdisconnect')}}">(Logout)</a>
+      </div>
+    </div>
+
+    <div class="menuContainer">
+      <div class="logoWrap">
+        <a href="{{url_for('home')}}"><img src="/static/poll2.png" alt="Pollearning logo"></a>
+      </div>
+      <div class="menuWrap">
+        <span class="homeMenuButton"><a href="{{url_for('home')}}">Home</a></span>
+        <span class="pollsMenuButton"><a href="{{url_for('showPolls')}}">Polls</a></span>
+        <div class="addMenuWrap">
+          <span class="addMenu"><a href="{{url_for('newPoll')}}">Create Poll</a></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="editCreateDeleteTitle">
+      <span class="editCreateDelete">Edit Poll ({{poll.title}})</span>
+    </div>
+
+    <div class="editcreateWrap">
+      <form method="POST">
+        <div class="pollTitleQuestionWrap2">
+          <div class="pollTitle2">
+            <span class="pollTitleText2">Edit your poll title.</span>
+            <input type="text" size="30" name="pollTitle" placeholder="Current Poll Title: {{poll.title}}">
+          </div>
+          <div class="pollQuestion2">
+            <span class="pollQuestionText2">Edit your poll question.</span>
+            <textarea type="text" size="30" name="pollQuestion" placeholder="Current Poll Question: {{poll.question_text}}" rows="2"></textarea>
+          </div>
+        </div>
+
+        {% if choices %}
+        {% if total_votes==0 %}
+        <div class="choicesWrapText">
+          <span class="choicesText">Edit your poll choices.</span>
+        </div>
+        {% for choice in choices %}
+        <div class="choicesWrap">
+          <input type="text" size="30" name="choiceTitle{{choice.id}}" placeholder="Current Choice: {{choice.choice_text}}">
+        </div>
+        {% endfor %}
+        {% else %}
+        <div class="choicesWrap">
+          <span>Choices for this poll can't be edited since voting has already begun.</span>
+        </div>
+        {% endif %}
+        {% else %}
+        <div class="choicesWrapEdit">
+          <span class="instructions2">Add/Edit your poll choices.</span>
+          <input type="text" size="30" name="newChoiceTitle1" placeholder="Choice option #1"><br><br>
+          <input type="text" size="30" name="newChoiceTitle2" placeholder="Choice option #2"><br><br>
+          <input type="text" size="30" name="newChoiceTitle3" placeholder="Choice option #3"><br><br>
+          <input type="text" size="30" name="newChoiceTitle4" placeholder="Choice option #4"><br><br>
+          <input type="text" size="30" name="newChoiceTitle5" placeholder="Choice option #5"><br><br>
+          <input type="text" size="30" name="newChoiceTitle6" placeholder="Choice option #6"><br><br>
+          <input type="text" size="30" name="newChoiceTitle7" placeholder="Choice option #7"><br><br>
+          <input type="text" size="30" name="newChoiceTitle8" placeholder="Choice option #8"><br><br>
+          <input type="text" size="30" name="newChoiceTitle9" placeholder="Choice option #9"><br><br>
+          <input type="text" size="30" name="newChoiceTitle10" placeholder="Choice option #10">
+        </div>
+        {% endif %}
+
+        <div class="submitCancelButtonWrap">
+          <div class="cancelButtonWrap">
+            <span class="cancelButton"><a href="{{url_for('singlePoll', poll_id=poll.id)}}">Cancel</a></span>
+          </div>
+          <div class="submitButtonWrap">
+            <input type="submit" value="Edit" class="submit">
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="fContainer">
+    </div>
+
+  </body>
+
+</html>

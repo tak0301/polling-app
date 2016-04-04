@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+    <title>Pollearning</title>
+    <link rel="stylesheet" href="/static/styles.css">
+  </head>
+
+  <body>
+
+    <div class="accountContainer">
+      <div class="accountWrap">
+        <span>{{creator.name}}</span>
+        <a href="{{url_for('gdisconnect')}}">(Logout)</a>
+      </div>
+    </div>
+
+      <div class="menuContainer">
+        <div class="logoWrap">
+          <a href="{{url_for('home')}}"><img src="/static/poll2.png" alt="Pollearning logo"></a>
+        </div>
+        <div class="menuWrap">
+          <span class="homeMenuButton"><a href="{{url_for('home')}}">Home</a></span>
+          <span class="pollsMenuButton"><a href="{{url_for('showPolls')}}">Polls</a></span>
+          <div class="addMenuWrap">
+            <span class="addMenu"><a href="{{url_for('newPoll')}}">Create Poll</a></span>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="pollMainContainer">
+      {% for poll in polls %}
+        <div class="pollListContainer">
+          <div class="pollImageWrap">
+          {% if poll.poll_image == "noPic" %}
+            <a class="pollLink" href="{{url_for('singlePoll', poll_id=poll.id)}}">
+              <img class="img-poll" src="/static/pollGeneric.png" alt="Image of poll">
+              <div class="pollTextWrap">
+                <span class="pollTitle">{{poll.title}}</span><br>
+                <span class="pollQuestion">{{poll.question_text}}</span>
+              </div>
+            </a>
+          {% else %}
+            <a href="{{url_for('singlePoll', poll_id=poll.id)}}">
+              <img class="img-poll" src="/static/{{poll.poll_image}}" alt="Image of poll">
+              <div class="pollTextWrap">
+                <span class="pollTitle">{{poll.title}}</span><br>
+                <span class="pollQuestion">{{poll.question_text}}</span>
+              </div>
+            </a>
+          {% endif %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <div class="fContainer">
+      </div>
+
+
+  </body>
+
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+    <title>Pollearning</title>
+    <link rel="stylesheet" href="/static/styles.css">
+  </head>
+
+  <body>
+
+    <div class="accountContainer">
+      <div class="accountWrap">
+        <span>{{creator.name}}</span>
+        <a href="{{url_for('gdisconnect')}}">(Logout)</a>
+      </div>
+    </div>
+
+    <div class="menuContainer">
+      <div class="logoWrap">
+        <a href="{{url_for('home')}}"><img src="/static/poll2.png" alt="Pollearning logo"></a>
+      </div>
+      <div class="menuWrap">
+        <span class="homeMenuButton"><a href="{{url_for('home')}}">Home</a></span>
+        <span class="pollsMenuButton"><a href="{{url_for('showPolls')}}">Polls</a></span>
+        <div class="addMenuWrap">
+          <span class="addMenu"><a href="{{url_for('newPoll')}}">Create Poll</a></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="questionContainer">
+      <span class="pollQuestionBig">{{poll.question_text}}</span>
+    </div>
+
+    {% if choices %}
+    {% if total_votes > 0 %}
+    <div class="pieChartContainer">
+      <img class="pieChart" src="/static/pie{{poll.id}}{{total_votes}}.png" alt="Image of pie chart for this poll">
+    </div>
+    {% else %}
+    <div class="pieChartContainer">
+      <span class="pieChartText">(After voting begins on this poll, there will be a pie chart of poll results that shows up in this space.)</span>
+    </div>
+    {% endif %}
+
+    {% for choice in choices %}
+    <form class="formSinglePoll" method="POST">
+      <div class="choicesContainer">
+        <div class="colorChoiceWrap">
+          <div class="selectBox">
+            <input type="radio" name="choiceVote" value="{{choice.id}}" class="vote">
+          </div>
+          {% if choice.rank==1 %}
+          <div class="colorRank1">
+          </div>
+          {% elif choice.rank==2 %}
+          <div class="colorRank2">
+          </div>
+          {% elif choice.rank==3 %}
+          <div class="colorRank3">
+          </div>
+          {% elif choice.rank==4 %}
+          <div class="colorRank4">
+          </div>
+          {% elif choice.rank==5 %}
+          <div class="colorRank5">
+          </div>
+          {% elif choice.rank==6 %}
+          <div class="colorRank6">
+          </div>
+          {% elif choice.rank==7 %}
+          <div class="colorRank7">
+          </div>
+          {% elif choice.rank==8 %}
+          <div class="colorRank8">
+          </div>
+          {% elif choice.rank==9 %}
+          <div class="colorRank9">
+          </div>
+          {% elif choice.rank==10 %}
+          <div class="colorRank10">
+          </div>
+          {% endif %}
+          <span class="choiceText">{{choice.choice_text}}</span>
+          <div class="percentNumberWrap">
+            {% if total_votes > 0 %}
+            <span class="percent">-- {{(choice.votes/total_votes) * 100}}%</span>
+            <span class="number">({{choice.votes}})</span>
+            {% else %}
+            <span class="percent">0%</span>
+            <span class="number">0</span>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      <div class="voteButtonWrap">
+        <input type="submit" value="Vote" class="submit">
+      </div>
+    </form>
+
+
+    {% else %}
+    <div class="noChoicesWrap">
+      <span class="noChoicesText">There are no choices for this poll yet. Poll owners must edit the poll to add choices.</span>
+    </div>
+    {% endif %}
+
+    <div class="fContainer">
+    </div>
+
+  </body>
+
+
+</html>
